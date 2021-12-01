@@ -1,1 +1,2 @@
-export { FaChevronRight } from "react-icons/fa";
+export { AiOutlineMail } from "react-icons/ai";
+export { BiLockAlt } from "react-icons/bi";

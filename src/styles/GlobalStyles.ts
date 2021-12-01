@@ -45,5 +45,7 @@ export default createGlobalStyle`
     --quaternary: #292b2f;
     --quinary: #393d42;
     --senary: #828386;
+
+    --button: #0077b5;
   }
 `;
