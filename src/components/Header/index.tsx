@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import AuthContext from "contexts/auth";
 
 import LogoKinvo from "assets/logo.svg";
 import Money from "assets/money.svg";
@@ -24,6 +25,12 @@ import {
 } from "./styles";
 
 const Header = function () {
+  const { signOut } = useContext(AuthContext);
+
+  const handleSignOut = () => {
+    signOut();
+  };
+
   return (
     <Container>
       <ContentLeft>
@@ -64,7 +71,7 @@ const Header = function () {
           </Descricao>
         </Widget>
 
-        <ButtonWallet>
+        <ButtonWallet onClick={handleSignOut}>
           <BarsIcon src={Bars} alt="icon bars" />
         </ButtonWallet>
       </ContentRight>

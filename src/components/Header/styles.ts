@@ -78,10 +78,10 @@ export const Title = styled.h1`
 export const ButtonWallet = styled.button`
   border: none;
   background: transparent;
+  cursor: pointer;
 
   &:focus {
     outline: 0;
-    cursor: pointer;
   }
 `;
 

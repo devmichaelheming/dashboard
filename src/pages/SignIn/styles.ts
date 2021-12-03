@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import styled, { css } from "styled-components";
+import { AiOutlineMail } from "styles/icons";
 
 export const Container = styled.div`
   width: 100%;
@@ -19,52 +19,22 @@ export const Form = styled.form`
   padding: 40px 20px;
   border-radius: 8px;
   width: 500px;
+  @media (max-width: 600px) {
+    width: 90%;
+  }
 
   .p-inputgroup:nth-child(2) {
     padding: 20px 0;
-  }
-
-  .redirect {
-    width: 100%;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-
-    &::before,
-    &::after {
-      content: "";
-      display: block;
-      width: 20%;
-      height: 1px;
-      background: var(--secondary);
-    }
-
-    &::before {
-      margin-right: 8px;
-    }
-    &::after {
-      margin-left: 8px;
-    }
   }
 `;
 
 export const TitleForm = styled.h1``;
 
-export const Redirect = styled(Link)`
-  color: var(--button);
-  text-decoration: none;
+const iconsCSS = css`
+  width: 20px;
+  height: 20px;
 `;
 
-export const ButtonSubmit = styled.button`
-  width: 100%;
-  height: 40px;
-  border: 0;
-  background: var(--button);
-  color: white;
-  border-radius: 6px;
-  margin: 20px 0;
-  font-size: 16px;
-  cursor: pointer;
+export const IconEmail = styled(AiOutlineMail)`
+  ${iconsCSS}
 `;
