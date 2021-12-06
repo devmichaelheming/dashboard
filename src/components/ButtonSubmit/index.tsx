@@ -8,7 +8,11 @@ type Props = {
 };
 
 const ButtonSubmit = function ({ title, action }: Props) {
-  return <Container onClick={action}>{title}</Container>;
+  return (
+    <Container onClick={action} type="submit">
+      {title}
+    </Container>
+  );
 };
 
 export default ButtonSubmit;

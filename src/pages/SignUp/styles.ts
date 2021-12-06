@@ -19,6 +19,7 @@ export const Form = styled.form`
   padding: 40px 20px;
   border-radius: 8px;
   width: 500px;
+  gap: 20px;
 
   .p-inputgroup:nth-child(2) {
     padding: 20px 0;

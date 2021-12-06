@@ -1,5 +1,5 @@
-import Dashboard from "./Dashboard";
-import SignIn from "./SignIn";
+import Dashboard from "./Dashboard/Home";
+import SignIn from "./SignIn/index";
 import SignUp from "./SignUp";
 import Users from "./Users";
 

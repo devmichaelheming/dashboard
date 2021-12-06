@@ -1,22 +1,64 @@
-import React, { useState, FormEvent, useContext, useEffect } from "react";
+import React, { useState, useEffect, FormEvent, useContext } from "react";
 import AuthContext from "contexts/auth";
 
-import { InputText } from "primereact/inputtext";
-import { Password } from "primereact/password";
+import TextField from "@mui/material/TextField";
+import IconButton from "@mui/material/IconButton";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
+import FormControl from "@mui/material/FormControl";
 
-import { Loading, ButtonSubmit, ButtonRedirect } from "components";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
-import { Container, Form, TitleForm, IconEmail } from "./styles";
+import { Loading, ButtonRedirect, ButtonSubmit } from "components";
+
+import { Container, Form, TitleForm } from "./styles";
+
+interface State {
+  amount: string;
+  password: string;
+  weight: string;
+  weightRange: string;
+  showPassword: boolean;
+}
 
 const SignIn = function () {
   const { signIn } = useContext(AuthContext);
-  const [password, setPassword] = useState("");
+
   const [isLoading, setIsLoading] = useState(true);
   const [email, setEmail] = useState("");
+  const [values, setValues] = React.useState<State>({
+    amount: "",
+    password: "",
+    weight: "",
+    weightRange: "",
+    showPassword: false,
+  });
+
+  const handleChange =
+    (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValues({ ...values, [prop]: event.target.value });
+    };
+
+  const handleClickShowPassword = () => {
+    setValues({
+      ...values,
+      showPassword: !values.showPassword,
+    });
+  };
+
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
+    event.preventDefault();
+  };
 
   const handleSignIn = async (event: FormEvent) => {
-    event.preventDefault();
-    signIn(email, password);
+    if (email && values.password !== "") {
+      event.preventDefault();
+      signIn(email, values.password);
+    }
   };
 
   useEffect(() => {
@@ -45,28 +87,40 @@ const SignIn = function () {
       <Form>
         <TitleForm>Acessar sistema</TitleForm>
 
-        <div className="p-inputgroup">
-          <span className="p-inputgroup-addon">
-            <IconEmail />
-          </span>
-          <InputText
-            value={email}
-            placeholder="E-Mail"
+        <FormControl variant="outlined" fullWidth>
+          <TextField
+            id="outlined-basic"
+            label="E-Mail"
             onChange={e => setEmail(e.target.value)}
+            value={email}
+            fullWidth
           />
-        </div>
+        </FormControl>
 
-        <div className="p-inputgroup">
-          <span className="p-inputgroup-addon">
-            <i className="pi pi-lock" />
-          </span>
-          <Password
-            value={password}
-            toggleMask
-            placeholder="Password"
-            onChange={e => setPassword(e.target.value)}
+        <FormControl variant="outlined" fullWidth>
+          <InputLabel htmlFor="outlined-adornment-password">
+            Password
+          </InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            type={values.showPassword ? "text" : "password"}
+            value={values.password}
+            onChange={handleChange("password")}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Password"
           />
-        </div>
+        </FormControl>
 
         <ButtonSubmit title="Acessar" action={handleSignIn} />
 

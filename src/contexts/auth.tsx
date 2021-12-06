@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 interface AuthContextProps {
   signed?: boolean;
-  user: Object | null;
+  user: any;
   signIn: any;
   signUp: any;
   signOut(): void;
@@ -65,9 +65,9 @@ export const AuthProvider = function ({ children }: any) {
             signed: !!email,
           }),
         );
+        navigate("/dashboard");
       })
       .catch(error => {
-        console.log(error.code);
         switch (error.code) {
           case "auth/invalid-email":
             setMessage(true);

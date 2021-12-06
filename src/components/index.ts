@@ -1,8 +1,9 @@
-import Header from "./Header";
-import Main from "./Main";
-import Sidebar from "./Sidebar";
-import Loading from "./Loading";
 import ButtonSubmit from "./ButtonSubmit";
 import ButtonRedirect from "./ButtonRedirect";
+import Loading from "./Loading";
+import Header from "./Dashboard/Header";
+import Home from "./Dashboard/Home";
+import Main from "./Dashboard/Main";
+import Sidebar from "./Dashboard/Sidebar";
 
-export { Header, Main, Sidebar, Loading, ButtonSubmit, ButtonRedirect };
+export { ButtonSubmit, ButtonRedirect, Header, Home, Loading, Main, Sidebar };
