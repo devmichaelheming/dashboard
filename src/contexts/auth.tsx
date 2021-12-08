@@ -35,9 +35,6 @@ export const AuthProvider = function ({ children }: any) {
 
       if (storageUser) {
         setUser(JSON.parse(storageUser));
-        navigate("/dashboard");
-      } else {
-        navigate("/");
       }
     }
 
@@ -65,7 +62,7 @@ export const AuthProvider = function ({ children }: any) {
             signed: !!email,
           }),
         );
-        navigate("/dashboard");
+        navigate("/");
       })
       .catch(error => {
         switch (error.code) {
@@ -128,7 +125,7 @@ export const AuthProvider = function ({ children }: any) {
             signed: !!email,
           }),
         );
-        navigate("/dashboard");
+        navigate("/");
       })
       .catch(error => {
         switch (error.code) {
@@ -186,4 +183,4 @@ export const AuthProvider = function ({ children }: any) {
   );
 };
 
-export default AuthContext;
+export { AuthContext };

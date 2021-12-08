@@ -13,4 +13,4 @@ const Loading = function () {
   return <Lottie options={defaultOptions} height={400} width={400} />;
 };
 
-export default Loading;
+export { Loading };

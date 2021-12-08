@@ -1,13 +1,16 @@
 import React, { useContext } from "react";
-import AuthContext from "contexts/auth";
+import { AuthContext } from "contexts/auth";
 
-import AuthRoutes from "routes/auth.routes";
-import AppRoutes from "routes/app.routes";
+import AppRoutes from "./app.routes";
+import AuthRoutes from "./auth.routes";
 
-const routes = function () {
+const Routes = function () {
   const { signed } = useContext(AuthContext);
 
-  return signed ? <AppRoutes /> : <AuthRoutes />;
+  if (signed) {
+    return <AppRoutes />;
+  }
+  return <AuthRoutes />;
 };
 
-export default routes;
+export { Routes };

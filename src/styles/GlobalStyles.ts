@@ -16,6 +16,7 @@ export default createGlobalStyle`
     height: 100%;
     width: 100%;
     background: var(--primary);
+    overflow-x: hidden;
 
     ::-webkit-scrollbar {
         width: 6px;
@@ -25,6 +26,11 @@ export default createGlobalStyle`
         background-color: #9DA0AA;
         border-radius: 4px;
     }
+  }
+
+  main {
+    padding: 70px 0 0 20px;
+    width: 100%
   }
   
   *, button, input {

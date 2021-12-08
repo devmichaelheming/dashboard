@@ -25,4 +25,4 @@ const ButtonRedirect = function ({ type }: Props) {
   );
 };
 
-export default ButtonRedirect;
+export { ButtonRedirect };

@@ -1,5 +1,5 @@
-import React, { useState, useContext } from "react";
-import AuthContext from "contexts/auth";
+import React, { useState, useContext, ReactNode } from "react";
+import { AuthContext } from "contexts/auth";
 import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 
@@ -18,7 +18,11 @@ import {
   Menu,
   MenuItem,
   Tooltip,
+  Badge,
+  Stack,
 } from "@mui/material";
+
+import Box from "@mui/material/Box";
 
 import {
   Menu as MenuIcon,
@@ -29,9 +33,10 @@ import {
   Logout as LogoutIcon,
   Home as HomeIcon,
   Person as PersonIcon,
+  Mail as MailIcon,
 } from "@mui/icons-material";
 
-import { Container } from "./styles";
+import { Container, LinkItem } from "./styles";
 
 const drawerWidth = 240;
 
@@ -104,7 +109,11 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-const Sidebar = function () {
+interface Props {
+  children: ReactNode;
+}
+
+const Sidebar = function ({ children }: Props) {
   const theme = useTheme();
   const { user, signOut } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
@@ -135,11 +144,7 @@ const Sidebar = function () {
   return (
     <Container>
       <CssBaseline />
-      <AppBar
-        position="fixed"
-        open={open}
-        style={{ backgroundColor: "var(--button)" }}
-      >
+      <AppBar position="fixed" open={open}>
         <Toolbar className="toolbar">
           <IconButton
             color="inherit"
@@ -159,6 +164,14 @@ const Sidebar = function () {
             </Typography>
 
             <div className="header-profile">
+              <Stack spacing={2} direction="row">
+                <Badge badgeContent={4} color="secondary">
+                  <MailIcon color="action" />
+                </Badge>
+                <Badge badgeContent={4} color="success">
+                  <MailIcon color="action" />
+                </Badge>
+              </Stack>
               <Tooltip title="Account settings">
                 <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
                   <Avatar
@@ -218,12 +231,10 @@ const Sidebar = function () {
                   Settings
                 </MenuItem>
                 <MenuItem onClick={handleSignOut}>
-                  {/* <button type="button" onClick={handleSignOut}> */}
                   <ListItemIcon>
                     <LogoutIcon fontSize="small" />
                   </ListItemIcon>
                   Logout
-                  {/* </button> */}
                 </MenuItem>
               </Menu>
             </div>
@@ -243,39 +254,50 @@ const Sidebar = function () {
         </DrawerHeader>
         <Divider />
         <List>
-          <ListItem button key="Home">
-            <ListItemIcon>
-              <HomeIcon />
-            </ListItemIcon>
-            <ListItemText primary="Home" />
-          </ListItem>
+          <LinkItem to="/">
+            <ListItem button key="Home">
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary="Home" />
+            </ListItem>
+          </LinkItem>
 
-          <ListItem button key="User">
-            <ListItemIcon>
-              <PersonIcon />
-            </ListItemIcon>
-            <ListItemText primary="User" />
-          </ListItem>
+          <LinkItem to="/users">
+            <ListItem button key="User">
+              <ListItemIcon>
+                <PersonIcon />
+              </ListItemIcon>
+              <ListItemText primary="User" />
+            </ListItem>
+          </LinkItem>
 
           <Divider />
 
-          <ListItem button key="Home">
-            <ListItemIcon>
-              <HomeIcon />
-            </ListItemIcon>
-            <ListItemText primary="Home" />
-          </ListItem>
+          <LinkItem to="/profile">
+            <ListItem button key="Profile">
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary="Profile" />
+            </ListItem>
+          </LinkItem>
 
-          <ListItem button key="User">
-            <ListItemIcon>
-              <PersonIcon />
-            </ListItemIcon>
-            <ListItemText primary="User" />
-          </ListItem>
+          <LinkItem to="/settings">
+            <ListItem button key="Settings">
+              <ListItemIcon>
+                <PersonIcon />
+              </ListItemIcon>
+              <ListItemText primary="Settings" />
+            </ListItem>
+          </LinkItem>
         </List>
       </Drawer>
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        {children}
+      </Box>
     </Container>
   );
 };
 
-export default Sidebar;
+export { Sidebar };

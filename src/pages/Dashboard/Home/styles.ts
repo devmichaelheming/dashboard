@@ -2,20 +2,27 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
+  margin-left: -16px;
+  gap: 30px;
   display: flex;
   flex-direction: column;
+
+  .MuiGrid-item {
+    background: #fff;
+    padding: 20px;
+    border-radius: 6px;
+    @media (max-width: 1200px) {
+      min-width: 100%;
+    }
+  }
 `;
 
-export const Wrapper = styled.div`
-  width: 100%;
+export const Section = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: row;
-`;
-
-export const Main = styled.div`
-  margin: 94px 0 0 103px;
-  padding: 20px;
-  display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  @media (max-width: 1200px) {
+    flex-direction: column;
+  }
 `;

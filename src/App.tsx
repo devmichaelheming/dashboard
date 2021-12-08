@@ -2,14 +2,14 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
 import GlobalStyles from "styles/GlobalStyles";
+import { Routes } from "routes";
 import { AuthProvider } from "./contexts/auth";
-import Rotues from "./routes";
 
 const App = function () {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <Rotues />
+        <Routes />
         <GlobalStyles />
       </AuthProvider>
     </BrowserRouter>

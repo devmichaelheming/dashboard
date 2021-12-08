@@ -2,12 +2,12 @@ import React from "react";
 
 import { Container } from "./styles";
 
-const Main = function () {
+const Profile = function () {
   return (
     <Container>
-      <h1>main antiga</h1>
+      <h1>Profile</h1>
     </Container>
   );
 };
 
-export default Main;
+export { Profile };

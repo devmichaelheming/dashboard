@@ -15,4 +15,4 @@ const ButtonSubmit = function ({ title, action }: Props) {
   );
 };
 
-export default ButtonSubmit;
+export { ButtonSubmit };

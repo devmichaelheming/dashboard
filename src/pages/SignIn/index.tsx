@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FormEvent, useContext } from "react";
-import AuthContext from "contexts/auth";
+import { AuthContext } from "contexts/auth";
 
 import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
@@ -130,4 +130,4 @@ const SignIn = function () {
   );
 };
 
-export default SignIn;
+export { SignIn };
