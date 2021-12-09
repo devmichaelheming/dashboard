@@ -16,7 +16,6 @@ export default createGlobalStyle`
     height: 100%;
     width: 100%;
     background: var(--primary);
-    overflow-x: hidden;
 
     ::-webkit-scrollbar {
         width: 6px;
@@ -54,5 +53,6 @@ export default createGlobalStyle`
     --senary: #828386;
 
     --button: #0077b5;
+    --buttonHover: #026091;
   }
 `;

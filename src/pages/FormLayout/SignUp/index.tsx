@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect, FormEvent, useContext } from "react";
 import { AuthContext } from "contexts/auth";
 
 import TextField from "@mui/material/TextField";
@@ -13,7 +13,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 import { Loading, ButtonSubmit, ButtonRedirect } from "components";
 
-import { Container, Form, TitleForm } from "./styles";
+import { Form, TitleForm } from "./styles";
 
 interface State {
   amount: string;
@@ -24,10 +24,9 @@ interface State {
 }
 
 const SignUp = function () {
-  const [email, setEmail] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
   const { signUp } = useContext(AuthContext);
-
+  const [isLoading, setIsLoading] = useState(true);
+  const [email, setEmail] = useState("");
   const [values, setValues] = React.useState<State>({
     amount: "",
     password: "",
@@ -54,7 +53,7 @@ const SignUp = function () {
     event.preventDefault();
   };
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: FormEvent) => {
     if (email && values.password !== "") {
       event.preventDefault();
       signUp(email, values.password);
@@ -83,50 +82,46 @@ const SignUp = function () {
   }
 
   return (
-    <Container>
-      <Form>
-        <TitleForm>Cadastrar</TitleForm>
+    <Form>
+      <TitleForm>Sign Up</TitleForm>
 
-        <FormControl variant="outlined" fullWidth>
-          <TextField
-            id="outlined-basic"
-            label="E-Mail"
-            onChange={e => setEmail(e.target.value)}
-            value={email}
-            fullWidth
-          />
-        </FormControl>
+      <FormControl variant="outlined" fullWidth>
+        <TextField
+          id="outlined-basic"
+          label="E-Mail"
+          onChange={e => setEmail(e.target.value)}
+          value={email}
+          fullWidth
+        />
+      </FormControl>
 
-        <FormControl variant="outlined" fullWidth>
-          <InputLabel htmlFor="outlined-adornment-password">
-            Password
-          </InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-password"
-            type={values.showPassword ? "text" : "password"}
-            value={values.password}
-            onChange={handleChange("password")}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Password"
-          />
-        </FormControl>
+      <FormControl variant="outlined" fullWidth>
+        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+        <OutlinedInput
+          id="outlined-adornment-password"
+          type={values.showPassword ? "text" : "password"}
+          value={values.password}
+          onChange={handleChange("password")}
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+                edge="end"
+              >
+                {values.showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          }
+          label="Password"
+        />
+      </FormControl>
 
-        <ButtonSubmit title="Cadastrar" action={handleSubmit} />
+      <ButtonSubmit title="SIGN UP" action={handleSubmit} />
 
-        <ButtonRedirect type="signUp" />
-      </Form>
-    </Container>
+      <ButtonRedirect type="signUp" />
+    </Form>
   );
 };
 

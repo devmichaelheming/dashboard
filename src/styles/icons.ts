@@ -1,2 +1,5 @@
-export { AiOutlineMail } from "react-icons/ai";
-export { BiLockAlt } from "react-icons/bi";
+export {
+  AiFillFacebook,
+  AiFillInstagram,
+  AiFillTwitterCircle,
+} from "react-icons/ai";

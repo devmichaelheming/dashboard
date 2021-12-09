@@ -11,9 +11,9 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
-import { Loading, ButtonRedirect, ButtonSubmit } from "components";
+import { Loading, ButtonSubmit, ButtonRedirect } from "components";
 
-import { Container, Form, TitleForm } from "./styles";
+import { Form, TitleForm } from "./styles";
 
 interface State {
   amount: string;
@@ -25,7 +25,6 @@ interface State {
 
 const SignIn = function () {
   const { signIn } = useContext(AuthContext);
-
   const [isLoading, setIsLoading] = useState(true);
   const [email, setEmail] = useState("");
   const [values, setValues] = React.useState<State>({
@@ -83,50 +82,46 @@ const SignIn = function () {
   }
 
   return (
-    <Container>
-      <Form>
-        <TitleForm>Acessar sistema</TitleForm>
+    <Form>
+      <TitleForm>Sign In</TitleForm>
 
-        <FormControl variant="outlined" fullWidth>
-          <TextField
-            id="outlined-basic"
-            label="E-Mail"
-            onChange={e => setEmail(e.target.value)}
-            value={email}
-            fullWidth
-          />
-        </FormControl>
+      <FormControl variant="outlined" fullWidth>
+        <TextField
+          id="outlined-basic"
+          label="E-Mail"
+          onChange={e => setEmail(e.target.value)}
+          value={email}
+          fullWidth
+        />
+      </FormControl>
 
-        <FormControl variant="outlined" fullWidth>
-          <InputLabel htmlFor="outlined-adornment-password">
-            Password
-          </InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-password"
-            type={values.showPassword ? "text" : "password"}
-            value={values.password}
-            onChange={handleChange("password")}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Password"
-          />
-        </FormControl>
+      <FormControl variant="outlined" fullWidth>
+        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+        <OutlinedInput
+          id="outlined-adornment-password"
+          type={values.showPassword ? "text" : "password"}
+          value={values.password}
+          onChange={handleChange("password")}
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+                edge="end"
+              >
+                {values.showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          }
+          label="Password"
+        />
+      </FormControl>
 
-        <ButtonSubmit title="Acessar" action={handleSignIn} />
+      <ButtonSubmit title="SIGN IN" action={handleSignIn} />
 
-        <ButtonRedirect type="signIn" />
-      </Form>
-    </Container>
+      <ButtonRedirect type="signIn" />
+    </Form>
   );
 };
 

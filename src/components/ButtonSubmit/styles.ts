@@ -9,4 +9,11 @@ export const Container = styled.button`
   border-radius: 6px;
   font-size: 16px;
   cursor: pointer;
+  margin: 10px 0;
+  transition: all 0.2s ease-out;
+
+  &:hover {
+    background: var(--buttonHover);
+    transition: all 0.2s ease-out;
+  }
 `;
