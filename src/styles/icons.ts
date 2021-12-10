@@ -1,3 +1,5 @@
+export { FaUsers } from "react-icons/fa";
+
 export {
   AiFillFacebook,
   AiFillInstagram,

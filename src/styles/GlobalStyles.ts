@@ -13,8 +13,8 @@ export default createGlobalStyle`
   }
 
   html, body, #root {
-    height: 100%;
     width: 100%;
+    height: 100%;
     background: var(--primary);
 
     ::-webkit-scrollbar {
@@ -27,9 +27,10 @@ export default createGlobalStyle`
     }
   }
 
-  main {
-    padding: 70px 0 0 20px;
-    width: 100%
+  .content {
+    padding: 70px 0 24px 0px;
+    width: 100%;
+    height: auto;
   }
   
   *, button, input {
@@ -48,7 +49,7 @@ export default createGlobalStyle`
     --primary: #EEF2F4;
     --secondary: #7d8386;
     --tertiary: #707B81;
-    --quaternary: #292b2f;
+    --quaternary: #646871;
     --quinary: #393d42;
     --senary: #828386;
 

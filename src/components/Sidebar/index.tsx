@@ -175,8 +175,8 @@ const Sidebar = function ({ children }: Props) {
               <Tooltip title="Account settings">
                 <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
                   <Avatar
-                    alt="Avatar github"
-                    src="https://github.com/devmichaelheming.png"
+                    alt="Avatar profile"
+                    src="https://randomuser.me/api/portraits/men/46.jpg"
                   />
                 </IconButton>
               </Tooltip>

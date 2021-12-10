@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   display: flex;
+  height: 100%;
 
   .MuiPaper-root {
     background: #fff;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     box-shadow: none;
+    z-index: 1000;
 
     button {
       svg {

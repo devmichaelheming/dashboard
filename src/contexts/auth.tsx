@@ -30,8 +30,8 @@ export const AuthProvider = function ({ children }: any) {
 
   // Validação para manter dados do usuário ao recarregar a página
   useEffect(() => {
-    function loadStorageData() {
-      const storageUser = localStorage.getItem("@Auth:userData");
+    async function loadStorageData() {
+      const storageUser = await localStorage.getItem("@Auth:userData");
 
       if (storageUser) {
         setUser(JSON.parse(storageUser));

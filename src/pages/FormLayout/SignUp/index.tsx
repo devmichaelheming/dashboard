@@ -63,7 +63,7 @@ const SignUp = function () {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 1800);
+    }, 1600);
   }, [isLoading]);
 
   if (isLoading) {

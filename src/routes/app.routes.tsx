@@ -8,7 +8,7 @@ import { Sidebar } from "components";
 export default function appRoutes() {
   return (
     <Sidebar>
-      <main>
+      <div className="content">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
@@ -17,7 +17,7 @@ export default function appRoutes() {
           {/* </Route> */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </main>
+      </div>
     </Sidebar>
   );
 }

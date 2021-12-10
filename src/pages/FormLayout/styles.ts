@@ -21,12 +21,14 @@ export const Container = styled.div`
   scrollbar-width: none;
 
   @media (max-width: 1200px) {
-    padding: 20px;
+    padding: 40px;
   }
   @media (max-width: 900px) {
-    padding: 0;
     height: auto;
     flex-direction: column;
+  }
+  @media (max-width: 500px) {
+    padding: 0px;
   }
 `;
 
@@ -41,7 +43,9 @@ export const SectionBanner = styled.div`
   @media (max-width: 900px) {
     width: 100%;
     height: 100vh;
-    padding: 0;
+  }
+  @media (max-width: 500px) {
+    padding: 0 20px;
   }
 `;
 
@@ -50,6 +54,12 @@ export const ImageBanner = styled.img`
   height: 100%;
   object-fit: cover;
   filter: grayscale(0.6);
+  @media (max-width: 900px) {
+    width: 90vw;
+  }
+  @media (max-width: 500px) {
+    width: 100vw;
+  }
 `;
 
 export const InfoBanner = styled.div`
@@ -116,7 +126,10 @@ export const SectionLogin = styled.div`
   justify-content: center;
   background: #fff;
   @media (max-width: 900px) {
-    width: 100%;
+    width: 90vw;
     height: 100vh;
+  }
+  @media (max-width: 900px) {
+    width: 100vw;
   }
 `;
