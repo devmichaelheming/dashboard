@@ -15,21 +15,13 @@ const Home = function () {
   return (
     <Container>
       <SectionWidget>
-        <Grid item xs={6} md={2.9}>
-          <Widget title="SALDO DISPONIVEL" />
-        </Grid>
+        <Widget title="SALDO DISPONIVEL" />
 
-        <Grid item xs={6} md={2.9}>
-          <Widget title="LUCRO" />
-        </Grid>
+        <Widget title="LUCRO" />
 
-        <Grid item xs={6} md={2.9}>
-          <Widget title="GASTOS" />
-        </Grid>
+        <Widget title="GASTOS" />
 
-        <Grid item xs={6} md={2.9}>
-          <Widget title="VALOR EXAMPLE" />
-        </Grid>
+        <Widget title="VALOR EXAMPLE" />
       </SectionWidget>
       <SectionCharts>
         <Grid item xs={6} md={8}>

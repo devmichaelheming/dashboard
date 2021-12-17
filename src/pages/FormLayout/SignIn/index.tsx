@@ -11,7 +11,7 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
-import { Loading, ButtonSubmit, ButtonRedirect } from "components";
+import { ScreenLoading, ButtonSubmit, ButtonRedirect } from "components";
 
 import { Form, TitleForm } from "./styles";
 
@@ -53,9 +53,9 @@ const SignIn = function () {
     event.preventDefault();
   };
 
-  const handleSignIn = async (event: FormEvent) => {
+  const handleSignIn = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     if (email && values.password !== "") {
-      event.preventDefault();
       signIn(email, values.password);
     }
   };
@@ -63,7 +63,7 @@ const SignIn = function () {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 1800);
+    }, 1600);
   }, [isLoading]);
 
   if (isLoading) {
@@ -76,7 +76,7 @@ const SignIn = function () {
           justifyContent: "center",
         }}
       >
-        <Loading />
+        <ScreenLoading />
       </div>
     );
   }
@@ -95,7 +95,7 @@ const SignIn = function () {
         />
       </FormControl>
 
-      <FormControl variant="outlined" fullWidth>
+      <FormControl onSubmit={handleSignIn} variant="outlined" fullWidth>
         <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
         <OutlinedInput
           id="outlined-adornment-password"
@@ -118,7 +118,7 @@ const SignIn = function () {
         />
       </FormControl>
 
-      <ButtonSubmit title="SIGN IN" action={handleSignIn} />
+      <ButtonSubmit title="SIGN IN" loading={false} />
 
       <ButtonRedirect type="signIn" />
     </Form>

@@ -1,6 +1,13 @@
 import { ButtonSubmit } from "./ButtonSubmit";
 import { ButtonRedirect } from "./ButtonRedirect";
-import { Loading } from "./Loading";
+import { ProgressSpinner } from "./ProgressSpinner";
+import { ScreenLoading } from "./ScreenLoading";
 import { Sidebar } from "./Sidebar";
 
-export { ButtonSubmit, ButtonRedirect, Loading, Sidebar };
+export {
+  ButtonRedirect,
+  ButtonSubmit,
+  ProgressSpinner,
+  ScreenLoading,
+  Sidebar,
+};

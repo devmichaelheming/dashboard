@@ -50,8 +50,40 @@ export const Content = styled.div`
 
   .datatable-crud-demo {
     width: 100%;
-    .p-datatable .p-datatable-header {
-      background: transparent;
+    .p-datatable {
+      .p-datatable-header {
+        background: transparent;
+      }
+      .p-datatable-wrapper {
+        .p-datatable-tbody {
+          .p-button-editar {
+            background: transparent;
+            border: none;
+            &:focus {
+              box-shadow: none;
+            }
+            span {
+              color: #16a34a;
+            }
+            &:hover {
+              background: var(--primary);
+            }
+          }
+          .p-button-deletar {
+            background: transparent;
+            border: none;
+            &:focus {
+              box-shadow: none;
+            }
+            span {
+              color: #ef4444;
+            }
+            &:hover {
+              background: var(--primary);
+            }
+          }
+        }
+      }
     }
 
     .p-column-title {

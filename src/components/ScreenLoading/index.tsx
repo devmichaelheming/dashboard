@@ -3,7 +3,7 @@ import Lottie from "react-lottie";
 
 import { loading } from "assets";
 
-const Loading = function () {
+const ScreenLoading = function () {
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -13,4 +13,4 @@ const Loading = function () {
   return <Lottie options={defaultOptions} height={400} width={400} />;
 };
 
-export { Loading };
+export { ScreenLoading };

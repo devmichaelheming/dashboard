@@ -1,16 +1,18 @@
 import React from "react";
 
+import { ProgressSpinner } from "../ProgressSpinner";
 import { Container } from "./styles";
 
 type Props = {
   title: string;
-  action: any;
+  loading: boolean;
 };
 
-const ButtonSubmit = function ({ title, action }: Props) {
+const ButtonSubmit = function ({ title, loading }: Props) {
   return (
-    <Container onClick={action} type="submit">
+    <Container type="submit">
       {title}
+      {loading ? <ProgressSpinner /> : ""}
     </Container>
   );
 };

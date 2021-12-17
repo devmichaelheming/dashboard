@@ -14,7 +14,6 @@ export default function appRoutes() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/users" element={<Users />} />
-          {/* </Route> */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

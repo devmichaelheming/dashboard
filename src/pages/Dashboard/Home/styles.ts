@@ -11,20 +11,11 @@ export const SectionWidget = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
 
-  .MuiGrid-item {
-    height: 120px;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    background: white;
-    justify-content: center;
-    box-shadow: 0 0.25rem 0.75rem rgb(18 38 63 / 8%);
-  }
-
-  @media (max-width: 1200px) {
+  /* @media (max-width: 1200px) {
     flex-direction: column;
-  }
+  } */
 `;
 
 export const SectionCharts = styled.div`
@@ -42,12 +33,21 @@ export const SectionCharts = styled.div`
     justify-content: center;
     box-shadow: 0 0.25rem 0.75rem rgb(18 38 63 / 8%);
 
-    @media (max-width: 1200px) {
-      min-width: 100%;
-    }
-
     .p-chart {
       height: 400px;
+    }
+
+    @media (max-width: 1200px) {
+      min-width: 100%;
+
+      .p-chart {
+        height: auto;
+      }
+      &:nth-child(2) {
+        .p-chart {
+          width: 40% !important;
+        }
+      }
     }
   }
 

@@ -11,7 +11,7 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
-import { Loading, ButtonSubmit, ButtonRedirect } from "components";
+import { ScreenLoading, ButtonSubmit, ButtonRedirect } from "components";
 
 import { Form, TitleForm } from "./styles";
 
@@ -76,7 +76,7 @@ const SignUp = function () {
           justifyContent: "center",
         }}
       >
-        <Loading />
+        <ScreenLoading />
       </div>
     );
   }
@@ -95,7 +95,7 @@ const SignUp = function () {
         />
       </FormControl>
 
-      <FormControl variant="outlined" fullWidth>
+      <FormControl onSubmit={handleSubmit} variant="outlined" fullWidth>
         <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
         <OutlinedInput
           id="outlined-adornment-password"
@@ -118,7 +118,7 @@ const SignUp = function () {
         />
       </FormControl>
 
-      <ButtonSubmit title="SIGN UP" action={handleSubmit} />
+      <ButtonSubmit title="SIGN UP" loading={false} />
 
       <ButtonRedirect type="signUp" />
     </Form>
