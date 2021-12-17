@@ -53,7 +53,7 @@ interface Props {
   onChangeUsername: (text: string) => void;
   onChangeEmail: (text: string) => void;
   setValues: (values: IValuesProps) => void;
-  setUsers: (users: IUserProps) => void;
+  setUsers: (users: IUserProps[]) => void;
 }
 
 const Modal = function ({
@@ -93,7 +93,7 @@ const Modal = function ({
     });
   };
   const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>,
+    event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
   };
@@ -130,7 +130,7 @@ const Modal = function ({
           <FormControl sx={{ width: "100%" }}>
             <TextField
               id="outlined-basic"
-              onChange={e => onChangeUsername(e.target.value)}
+              onChange={(e) => onChangeUsername(e.target.value)}
               value={username}
               label="Username"
               variant="outlined"
@@ -140,7 +140,7 @@ const Modal = function ({
           <FormControl sx={{ width: "100%" }}>
             <TextField
               id="outlined-basic"
-              onChange={e => onChangeEmail(e.target.value)}
+              onChange={(e) => onChangeEmail(e.target.value)}
               value={email}
               label="E-Mail"
               variant="outlined"

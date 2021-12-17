@@ -4,18 +4,33 @@ import { auth } from "services/firebase";
 
 import { ToastContainer, toast } from "react-toastify";
 
+interface ISignedType {
+  signed: boolean;
+}
 interface AuthContextProps {
-  signed?: boolean;
-  user: any;
-  signIn: any;
-  signUp: any;
-  signOut(): void;
+  signed?: ISignedType;
+  user?: IUserProps;
+  signIn?: () => Promise<void>;
+  signUp?: () => Promise<void>;
+  signOut?(): void;
 }
 
-const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
+interface IUserProps {
+  id: string | undefined;
+  email: string;
+  signed: boolean;
+}
 
-export const AuthProvider = function ({ children }: any) {
-  const [user, setUser] = useState<Object | null>(null);
+export const AuthContext = createContext<AuthContextProps>(
+  {} as AuthContextProps
+);
+
+interface IAuthProps {
+  children: unknown;
+}
+
+export function AuthProvider({ children }: IAuthProps) {
+  const [user, setUser] = useState({});
   const [message, setMessage] = useState(false);
   const navigate = useNavigate();
 
@@ -42,14 +57,13 @@ export const AuthProvider = function ({ children }: any) {
   }, []);
 
   // Função de login
-  function signIn(email: string, password: string) {
-    auth
+  async function signIn(email: string, password: string) {
+    await auth
       .signInWithEmailAndPassword(email, password)
-      .then(userCredential => {
+      .then((userCredential) => {
         setUser({
           id: userCredential?.user?.uid,
           email,
-          password,
           signed: !!email,
         });
 
@@ -58,13 +72,12 @@ export const AuthProvider = function ({ children }: any) {
           JSON.stringify({
             id: userCredential?.user?.uid,
             email,
-            password,
             signed: !!email,
-          }),
+          })
         );
         navigate("/");
       })
-      .catch(error => {
+      .catch((error) => {
         switch (error.code) {
           case "auth/invalid-email":
             setMessage(true);
@@ -98,7 +111,7 @@ export const AuthProvider = function ({ children }: any) {
                 position: "top-right",
                 theme: "colored",
                 ...configToast,
-              },
+              }
             );
             break;
         }
@@ -106,14 +119,13 @@ export const AuthProvider = function ({ children }: any) {
   }
 
   // Função de cadastro de usuário
-  function signUp(email: string, password: string) {
-    auth
+  async function signUp(email: string, password: string) {
+    await auth
       .createUserWithEmailAndPassword(email, password)
-      .then(userCredential => {
+      .then((userCredential) => {
         setUser({
           id: userCredential?.user?.uid,
           email,
-          password,
           signed: !!email,
         });
         localStorage.setItem(
@@ -121,13 +133,12 @@ export const AuthProvider = function ({ children }: any) {
           JSON.stringify({
             id: userCredential?.user?.uid,
             email,
-            password,
             signed: !!email,
-          }),
+          })
         );
         navigate("/");
       })
-      .catch(error => {
+      .catch((error) => {
         switch (error.code) {
           case "auth/invalid-email":
             setMessage(true);
@@ -145,7 +156,7 @@ export const AuthProvider = function ({ children }: any) {
                 position: "top-right",
                 theme: "colored",
                 ...configToast,
-              },
+              }
             );
             break;
           default:
@@ -156,7 +167,7 @@ export const AuthProvider = function ({ children }: any) {
                 position: "top-right",
                 theme: "colored",
                 ...configToast,
-              },
+              }
             );
             break;
         }
@@ -166,21 +177,19 @@ export const AuthProvider = function ({ children }: any) {
   // Função para encerrar sessão
   function signOut() {
     localStorage.clear();
-    setUser(null);
+    setUser({});
 
     navigate("/");
   }
 
   const signed = useMemo(
     () => ({ signed: !!user, user, signIn, signUp, signOut }),
-    [user],
+    [user]
   );
 
   return (
-    <AuthContext.Provider value={signed}>
+    <AuthContext.Provider value={{ signed }}>
       {message ? <ToastContainer /> : ""} {children}
     </AuthContext.Provider>
   );
-};
-
-export { AuthContext };
+}

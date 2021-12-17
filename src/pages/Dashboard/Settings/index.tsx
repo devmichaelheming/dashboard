@@ -36,7 +36,7 @@ interface IStateProps {
   showPassword?: boolean;
 }
 
-const Settings = function () {
+const Settings = () => {
   const [open, setOpen] = useState(false);
   const [globalFilter, setGlobalFilter] = useState("");
   const [users, setUsers] = useState<IUsersProps[]>([]);
@@ -90,12 +90,12 @@ const Settings = function () {
     const getUsers = async () => {
       const data = await getDocs(collectionRef);
       setUsers(
-        data.docs.map(value => ({
+        data.docs.map((value) => ({
           id: value.id,
           username: value.data().username,
           email: value.data().email,
           password: value.data().password,
-        })),
+        }))
       );
     };
     getUsers();
@@ -129,7 +129,7 @@ const Settings = function () {
         <i className="pi pi-search" />
         <InputText
           type="search"
-          onChange={e => setGlobalFilter(e.target.value)}
+          onChange={(e) => setGlobalFilter(e.target.value)}
           placeholder="Search..."
         />
       </span>
@@ -199,9 +199,9 @@ const Settings = function () {
               isVisible={open}
               hideModal={handleClose}
               username={username}
-              onChangeUsername={text => setUsername(text)}
+              onChangeUsername={(text) => setUsername(text)}
               email={email}
-              onChangeEmail={text => setEmail(text)}
+              onChangeEmail={(text) => setEmail(text)}
               values={values}
               setValues={setValues}
               setUsers={setUsers}
