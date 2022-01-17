@@ -48,7 +48,7 @@ const SignUp = function () {
   };
 
   const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>,
+    event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
   };
@@ -89,7 +89,7 @@ const SignUp = function () {
         <TextField
           id="outlined-basic"
           label="E-Mail"
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           value={email}
           fullWidth
         />

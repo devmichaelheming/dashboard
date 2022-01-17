@@ -97,7 +97,7 @@ const Users = function () {
   };
 
   const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>,
+    event: React.MouseEvent<HTMLButtonElement>
   ) => {
     event.preventDefault();
   };
@@ -200,7 +200,7 @@ const Users = function () {
         <i className="pi pi-search" />
         <InputText
           type="search"
-          onChange={e => setGlobalFilter(e.target.value)}
+          onChange={(e) => setGlobalFilter(e.target.value)}
           placeholder="Search..."
         />
       </span>
@@ -211,12 +211,12 @@ const Users = function () {
     const getUsers = async () => {
       const data = await getDocs(collectionRef);
       setUsers(
-        data.docs.map(value => ({
+        data.docs.map((value) => ({
           id: value.id,
           username: value.data().username,
           email: value.data().email,
           password: value.data().password,
-        })),
+        }))
       );
     };
     getUsers();
@@ -288,7 +288,7 @@ const Users = function () {
                 <FormControl sx={{ width: "100%" }}>
                   <TextField
                     id="outlined-basic"
-                    onChange={e => setUsername(e.target.value)}
+                    onChange={(e) => setUsername(e.target.value)}
                     value={username}
                     label="Username"
                     variant="outlined"
@@ -298,7 +298,7 @@ const Users = function () {
                 <FormControl sx={{ width: "100%" }}>
                   <TextField
                     id="outlined-basic"
-                    onChange={e => setEmail(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value)}
                     value={email}
                     label="E-Mail"
                     variant="outlined"
